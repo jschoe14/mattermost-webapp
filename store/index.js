@@ -152,7 +152,7 @@ export default function configureStore(initialState) {
                             clearUserCookie();
 
                             // Preserve any query string parameters on logout, including parameters
-                            // used by the application such as extra and redirect_to.
+                            // used by the application such as extra and _to.
                             window.location.href = `${basePath}${window.location.search}`;
 
                             store.dispatch({

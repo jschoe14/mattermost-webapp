@@ -102,6 +102,7 @@ export default class Root extends React.Component {
 
         setSystemEmojis(EmojiIndicesByAlias);
 
+
         // Force logout of all tabs if one tab is logged out
         $(window).bind('storage', (e) => {
             // when one tab on a browser logs out, it sets __logout__ in localStorage to trigger other tabs to log out

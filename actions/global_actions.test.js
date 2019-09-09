@@ -9,7 +9,7 @@ import {close as closeLhs} from 'actions/views/lhs';
 import LocalStorageStore from 'stores/local_storage_store';
 import {getState} from 'stores/redux_store';
 
-import {redirectUserToDefaultTeam, toggleSideBarRightMenuAction} from 'actions/global_actions.jsx';
+import {UserToDefaultTeam, toggleSideBarRightMenuAction} from 'actions/global_actions.jsx';
 
 jest.mock('actions/views/rhs', () => ({
     closeMenu: jest.fn(),
@@ -32,8 +32,8 @@ jest.mock('stores/redux_store', () => {
 });
 
 describe('actions/global_actions', () => {
-    describe('redirectUserToDefaultTeam', () => {
-        it('should redirect to /select_team when no team is available', async () => {
+    describe('UserToDefaultTeam', () => {
+        it('should  to /select_team when no team is available', async () => {
             const mockStore = configureStore();
             const store = mockStore({
                 entities: {
@@ -60,11 +60,11 @@ describe('actions/global_actions', () => {
             getState.mockImplementation(store.getState);
 
             browserHistory.push = jest.fn();
-            await redirectUserToDefaultTeam();
+            await UserToDefaultTeam();
             expect(browserHistory.push).toHaveBeenCalledWith('/select_team');
         });
 
-        it('should redirect to last channel on first team when current team is no longer available', async () => {
+        it('should  to last channel on first team when current team is no longer available', async () => {
             const userId = 'user1';
             LocalStorageStore.setPreviousTeamId('non-existent');
             LocalStorageStore.setPreviousChannelName(userId, 'team1', 'channel-in-team-1');
@@ -116,7 +116,7 @@ describe('actions/global_actions', () => {
             getState.mockImplementation(store.getState);
 
             browserHistory.push = jest.fn();
-            await redirectUserToDefaultTeam();
+            await UserToDefaultTeam();
             expect(browserHistory.push).toHaveBeenCalledWith('/team1/channels/channel-in-team-1');
         });
     });

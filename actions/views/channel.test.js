@@ -22,7 +22,7 @@ jest.mock('utils/browser_history', () => ({
 }));
 
 jest.mock('utils/channel_utils.jsx', () => ({
-    getRedirectChannelNameForTeam: () => 'town-square',
+    getChannelNameForTeam: () => 'town-square',
 }));
 
 jest.mock('actions/channel_actions.jsx', () => ({
